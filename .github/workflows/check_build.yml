@@ -33,6 +33,12 @@ jobs:
       - name: clang++ must be removed. It is :-)
         run: clang++ --version || true
 
+      - name: Install boost
+        run: sudo apt-get install libboost-all-dev
+
+      - name: Search Boost, thanks https://stackoverflow.com/a/29657712
+        run: whereis boost
+
       - name: Add intel repo to apt
         run: |
           wget https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB
