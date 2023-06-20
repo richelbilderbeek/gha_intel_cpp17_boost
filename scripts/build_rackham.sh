@@ -31,5 +31,5 @@ date
 
 
 module load gcc/13.1.0 intel-oneapi compiler
-icpx main.cpp --verbose -o gha_intel_cpp17_boost
+icpx main.cpp --verbose -o gha_intel_cpp17_boost -lboost_graph
 ./gha_intel_cpp17_boost

@@ -52,7 +52,7 @@ jobs:
       - name: Compile
         run: |
           source /opt/intel/oneapi/setvars.sh
-          icpx main.cpp --verbose -o gha_intel_cpp17_boost
+          icpx main.cpp --verbose -o gha_intel_cpp17_boost -lboost_graph
       
       - name: Run the program
         run: ./gha_intel_cpp17_boost
