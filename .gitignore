@@ -32,3 +32,4 @@
 *.app
 gha_intel_cpp17
 slurm-*.out
+gha_intel_cpp17_boost
