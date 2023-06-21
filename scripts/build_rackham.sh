@@ -29,7 +29,8 @@ fi
 
 date
 
-# One needs a boost module that is compatible with an Intel module:
+# One needs a Boost module that is compatible with a GCC module, 
+# after which Intel OneAPI is loaded.
 #
 # module spider boost
 #
@@ -45,13 +46,6 @@ date
 #        boost/1.81.0-gcc10.3.0-mpi4.1.1
 #        boost/1.81.0-gcc10.3.0
 
-
 module load gcc/11.2.0 boost/1.78.0_gcc11.2.0 intel-oneapi compiler
 icpx main.cpp -L/sw/libs/boost/1.78.0_gcc11.2.0/snowy/lib -lboost_graph -o gha_intel_cpp17_boost
-
-# Use older Intel compiler
-#module load intel/18.3 boost/1.70.0_intel18.3
-# icpc main.cpp -L/sw/libs/boost/1.70.0_intel18.3/snowy/lib -lboost_graph -o gha_intel_cpp17_boost
-
-
 ./gha_intel_cpp17_boost
