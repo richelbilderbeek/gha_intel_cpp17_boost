@@ -39,18 +39,25 @@ jobs:
       - name: Search Boost, thanks https://stackoverflow.com/a/29657712
         run: whereis boost
 
-      - name: Add intel repo to apt
-        run: |
-          wget https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB
-          sudo apt-key add GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB
-          rm GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB
-          sudo echo "deb https://apt.repos.intel.com/oneapi all main" | sudo tee /etc/apt/sources.list.d/oneAPI.list
-          sudo apt-get update
+      # Install Intel
+      - uses: rscohn2/setup-oneapi@v0
+        with:
+          list: true
+          components: |
+            icx
+
+#      - name: Add intel repo to apt
+#        run: |
+#          wget https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB
+#          sudo apt-key add GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB
+#          rm GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB
+#          sudo echo "deb https://apt.repos.intel.com/oneapi all main" | sudo tee /etc/apt/sources.list.d/oneAPI.list
+#          sudo apt-get update
 
       # Only need intel-oneapi-compiler-dpcpp-cpp and intel-oneapi-mkl-devel, according to
       # https://devmesh.intel.com/posts/991253/adding-intel-oneapi-toolkits-to-github-actions
-      - name: Install Intel components
-        run: sudo apt install --yes intel-oneapi-compiler-dpcpp-cpp intel-oneapi-mkl-devel
+#      - name: Install Intel components
+#        run: sudo apt install --yes intel-oneapi-compiler-dpcpp-cpp intel-oneapi-mkl-devel
 
       - name: Show the common variables script
         run: cat /opt/intel/oneapi/setvars.sh
